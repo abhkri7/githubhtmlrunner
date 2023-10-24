@@ -4,10 +4,12 @@
         <title>Query Reader</title>
     </head>
     <body>
-        <h1 id="hello"></h1>
+        <h1 id="hello">Github Html Embedder</h1>
+        Provide the link to a github html file (give normal link, not raw link) in this format: <br>
+        <b>https://abhkri7.github.io/ghtmlrunner/?url=YOUR_URL_HERE</b>
         <script>
 function getParams() {
-    params = window.location.href.split('?');
+    var params = window.location.href.split('?');
     params = params[1].split('&');
     kvparams = {};
     for (var i = 0; i < params.length; i++){
@@ -16,7 +18,17 @@ function getParams() {
     }
     return kvparams;
 }
-            console.log(getParams());
+            params = getParams()
+            //console.log(params);
+            var my_url = params['url'];
+            addon = my_url.split('/');
+            addon.splice(addon.indexOf('blob'),1);
+            addon = addon.join('/');
+            var temp = addon.indexOf('com') + 3;
+            addon = addon.slice(temp,addon.length);
+            my_url = "https://raw.githubusercontent.com" + addon;
+            //console.log(my_url);
+            fetch(my_url).then(response => response.text()).then(data => document.write(data));
         </script>
     <body>
  <html>
