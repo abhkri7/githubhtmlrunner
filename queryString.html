@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Query Reader</title>
+    </head>
+    <body>
+        <h1 id="hello"></h1>
+        <script>
+function getParams() {
+    params = window.location.href.split('?');
+    params = params[1].split('&');
+    kvparams = [];
+    for (var i = 0; i < params.length; i++){
+        kvparams.push(params[i].split('='));
+    }
+    return kvparams;
+}
+            console.log(getParams());
+        </script>
+    <body>
+ <html>
