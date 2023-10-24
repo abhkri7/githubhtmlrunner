@@ -9,9 +9,10 @@
 function getParams() {
     params = window.location.href.split('?');
     params = params[1].split('&');
-    kvparams = [];
+    kvparams = {};
     for (var i = 0; i < params.length; i++){
-        kvparams.push(params[i].split('='));
+        var temp = params[i].split('=');
+        kvparams[temp[0]] = temp[1]
     }
     return kvparams;
 }
